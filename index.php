@@ -17,4 +17,4 @@
  */
 
 // Carga el index.php de default
-include 'default/index.php';
+include 'default/public/index.php';
