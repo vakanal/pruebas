@@ -6,7 +6,7 @@ DirectoryIndex index.php
 
     # Directorio de instalacion, puede ser necesario si 
     # la aplicacion se ubica en public_html
-    RewriteBase /
+    #RewriteBase /
 
     # No permite reescritura si el archivo o directorio existe
     RewriteCond %{REQUEST_FILENAME} !-f

@@ -1,0 +1,6 @@
+DirectoryIndex index.php
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteRule  ^$ default/    [L]
+    RewriteRule  (.*) default/$1 [L]
+</IfModule>
