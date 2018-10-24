@@ -19,7 +19,8 @@ class AppController extends Controller
 
     final protected function initialize()
     {
-
+        # Template AdminLTE v2.4.5 (blank):
+        View::template('adminlte/starter');
     }
 
     final protected function finalize()
