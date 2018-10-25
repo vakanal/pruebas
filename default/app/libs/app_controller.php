@@ -19,7 +19,9 @@ class AppController extends Controller
 
     final protected function initialize()
     {
-        # Template AdminLTE v2.4.5 (blank):
+        # Array indicador de donde estoy (datos para Partials):
+        $this->breadcrumbs = array('modulo' => $this->module_name, 'controlador' => $this->controller_name, 'accion' => $this->action_name, 'parametros' => $this->parameters);
+        # Template por defecto (AdminLTE v2.4.5 - blankPage):
         View::template('adminlte/starter');
     }
 
