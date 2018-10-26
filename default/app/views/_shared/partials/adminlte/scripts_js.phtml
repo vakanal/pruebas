@@ -1,7 +1,14 @@
 <?= Tag::js('adminlte/jquery/dist/jquery.min') ?>
 <?= Tag::js('adminlte/bootstrap/js/bootstrap.min') ?>
+
+<?php switch ($breadcrumbs['controlador']) : ?>
+<?php case 'lock' : ?>
+<!-- Lock Screen -->
+<?php break ?>
+<?php default : ?>
 <?= Tag::js('adminlte/jquery-slimscroll/jquery.slimscroll.min') ?>
 <?= Tag::js('adminlte/fastclick/lib/fastclick') ?>
 <?= Tag::js('adminlte/js/adminlte.min') ?>
 <?= Tag::js('adminlte/js/demo') ?>
 <?= Tag::js('adminlte/main') ?>
+<?php endswitch ?>

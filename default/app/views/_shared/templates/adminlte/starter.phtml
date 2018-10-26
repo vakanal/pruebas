@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es-ES">
     <head>
-        <?php View::partial('adminlte/head_links') ?>
+        <?php View::partial('adminlte/head_links', NULL, array('breadcrumbs' => $breadcrumbs)) ?>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <!-- Site Wrapper -->
@@ -23,7 +23,7 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <?php View::partial('adminlte/content_header') ?>
+                    <?php View::partial('adminlte/content_header', NULL, array('breadcrumbs' => $breadcrumbs)) ?>
                 </section>
                 <!-- Main content -->
                 <section class="content">
@@ -34,14 +34,16 @@
             <footer class="main-footer">
                 <?php View::partial('adminlte/footer') ?>
             </footer>
-            <!-- Control Sidebar -->
+            <!-- Control Sidebar 
             <aside class="control-sidebar control-sidebar-dark">
-                <?php View::partial('adminlte/control_sidebar') ?>
+                <?php # View::partial('adminlte/control_sidebar') ?>
             </aside>
-            <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+            -->
+            <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar 
             <div class="control-sidebar-bg"></div>
+            -->
         </div>
         <!-- Scrtips JS -->
-        <?php View::partial('adminlte/scripts_js') ?>
+        <?php View::partial('adminlte/scripts_js', NULL, array('breadcrumbs' => $breadcrumbs)) ?>
     </body>
 </html>

@@ -1,9 +1,18 @@
 <h1>
-    Blank page
-    <small>it all starts here</small>
+<?php switch ($breadcrumbs['controlador']) : ?>
+<?php case 'index' : ?>
+    Starter Page <small>it all starts here</small>
+<?php break ?>
+<?php endswitch ?>
 </h1>
+
 <ol class="breadcrumb">
+<?php switch ($breadcrumbs['controlador']) : ?>
+<?php case 'index' : ?>
     <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li><a href="#">Examples</a></li>
-    <li class="active">Blank page</li>
+<?php break ?>
+<?php endswitch ?>
+    <li class="active">
+        <?= ucfirst($breadcrumbs['accion']) . ' Action' ?>
+    </li>
 </ol>

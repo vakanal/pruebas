@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <?php View::partial('adminlte/head_links', NULL, array('breadcrumbs' => $breadcrumbs)) ?>
+    </head>
+    <body class="hold-transition lockscreen">
+        <!-- Automatic element centering -->
+        <div class="lockscreen-wrapper">
+            <!-- Logo -->
+            <div class="lockscreen-logo">
+                <a href="#"><b>Admin</b>LTE</a>
+            </div>
+            <!-- User name -->
+            <div class="lockscreen-name">John Doe</div>
+            <!-- START LOCK SCREEN ITEM -->
+            <?php View::content() ?>
+        </div>
+        <!-- Scrtips JS -->
+        <?php View::partial('adminlte/scripts_js', NULL, array('breadcrumbs' => $breadcrumbs)) ?>
+    </body>
+</html>
