@@ -1,18 +1,17 @@
 <div class="lockscreen-item">
     <!-- lockscreen image -->
     <div class="lockscreen-image">
-        <img src="http://localhost/pruebas/img/adminlte/img/user1-128x128.jpg" alt="User Image">
+        <?= Html::img('adminlte/img/user1-128x128.jpg', 'User Image') ?>
     </div>
     <!-- lockscreen credentials (contains the form) -->
-    <form class="lockscreen-credentials">
+    <?= Form::open('', 'post', 'class="lockscreen-credentials"') ?>
         <div class="input-group">
-            <input type="password" class="form-control" placeholder="password">
-
+            <?= Form::pass('userpass', 'class="form-control" placeholder="password"') ?>
             <div class="input-group-btn">
-                <button type="button" class="btn"><i class="fa fa-arrow-right text-muted"></i></button>
+                <?= Form::submit('<i class="fa fa-arrow-right text-muted"></i>', 'class="btn"') ?>
             </div>
         </div>
-    </form>
+    <?= Form::close() ?>
 </div>
 
 <div class="help-block text-center">
@@ -20,10 +19,10 @@
 </div>
 
 <div class="text-center">
-    <a href="login.html">Or sign in as a different user</a>
+    <?= Html::link('login', 'Or sign in as a different user') ?>
 </div>
 
 <div class="lockscreen-footer text-center">
-    Copyright &copy; 2014-2016 <b><a href="https://adminlte.io" class="text-black">Almsaeed Studio</a></b><br>
+    Copyright &copy; <?= date('Y') ?> <b><a href="#" class="text-black">Álvaro Gordillo Reina</a></b><br>
     All rights reserved
 </div>

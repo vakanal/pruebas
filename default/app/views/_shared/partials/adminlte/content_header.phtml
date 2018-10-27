@@ -9,7 +9,7 @@
 <ol class="breadcrumb">
 <?php switch ($breadcrumbs['controlador']) : ?>
 <?php case 'index' : ?>
-    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><?= Html::link('index', '<i class="fa fa-dashboard"></i> Home</a>') ?></li>
 <?php break ?>
 <?php endswitch ?>
     <li class="active">

@@ -7,6 +7,12 @@
 <?php case 'lock': ?>
 <title>Curso CRUD | Lockscreen</title>
 <?php break ?>
+<?php case 'login': ?>
+<title>Curso CRUD | Log in</title>
+<?php break ?>
+<?php case 'register' : ?>
+<title>Curso CRUD | Registration</title>
+<?php break ?>
 <?php default : ?>
 <title>Curso CRUD | Starter</title>
 <?php endswitch ?>
@@ -18,8 +24,12 @@
 <?php Html::headLinkResource('css/adminlte/css/AdminLTE.min.css', 'rel="stylesheet"') ?>
 
 <?php switch ($breadcrumbs['controlador']) : ?>
-<?php case 'lock': ?>
-<!-- Lock Screen -->
+<?php case 'lock' : ?>
+<!-- Lockscreen -->
+<?php break ?>
+<?php case 'login' : ?>
+<?php case 'register' : ?>
+<?php Html::headLinkResource('css/adminlte/iCheck/square/blue.css', 'rel="stylesheet"') ?>
 <?php break ?>
 <?php default : ?>
 <?php Html::headLinkResource('css/adminlte/css/skins/_all-skins.min.css', 'rel="stylesheet"') ?>

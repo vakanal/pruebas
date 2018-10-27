@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+    <head>
+        <?php View::partial('adminlte/head_links', NULL, array('breadcrumbs' => $breadcrumbs)) ?>
+    </head>
+    <body class="hold-transition register-page">
+        <div class="register-box">
+            <div class="register-logo">
+                <a href="#"><b>Admin</b>LTE</a>
+            </div>
+            <div class="register-box-body">
+                <?php View::content() ?>
+            </div>
+        </div>
+        <!-- Scrtips JS -->
+        <?php View::partial('adminlte/scripts_js', NULL, array('breadcrumbs' => $breadcrumbs)) ?>
+        <script>
+            $(function () {
+                $('input').iCheck({
+                    checkboxClass: 'icheckbox_square-blue',
+                    radioClass: 'iradio_square-blue',
+                    increaseArea: '20%' /* optional */
+                });
+            });
+        </script>
+    </body>
+</html>
