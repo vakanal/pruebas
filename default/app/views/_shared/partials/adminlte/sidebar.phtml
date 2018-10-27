@@ -11,7 +11,7 @@
     </div>
     -->
     
-    <!-- search form (Optional) 
+    <!-- search form (Optional) -->
     <?= Form::open('', 'post', 'class="sidebar-form"') ?>
         <div class="input-group">
             <?= Form::text('q', 'class="form-control" placeholder="Search..."') ?>
@@ -20,28 +20,27 @@
             </span>
         </div>
     <?= Form::close() ?>
-    -->
     
     <!-- Sidebar Menu -->
     <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <!--
-        <li class="active">
-            <a href="#"><i class="fa fa-link"></i> <span>Link</span></a>
-        </li>
-        -->
-        <li class="treeview active">
-            <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
+        <li <?= ($breadcrumbs['controlador'] === 'index') ? 'class="treeview active"' : 'class="treeview"' ?>>
+            <a href="#"><i class="fa fa-link"></i> <span>Examples</span>
                 <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
             </a>
             <ul class="treeview-menu">
-                <li class="active"><?= Html::link('index', '<i class="fa fa-check-circle-o"></i> Start Page') ?></li>
-                <li><?= Html::link('lock', '<i class="fa fa-circle-o"></i> Lock Page') ?></li>
-                <li><?= Html::link('login', '<i class="fa fa-circle-o"></i> Login Page') ?></li>
-                <li><?= Html::link('register', '<i class="fa fa-circle-o"></i> Register Page') ?></li>
+                <li <?= ($breadcrumbs['controlador'] === 'index') ? 'class="active"' : '' ?>>
+                    <?= MyHtml::link('', ($breadcrumbs['accion'] === 'index') ? '<i class="fa fa-circle-o text-aqua"></i> Start Page' : '<i class="fa fa-circle-o"></i> Start Page') ?>
+                </li>
+                <li><?= MyHtml::link('lock/', '<i class="fa fa-circle-o"></i> Lock Page') ?></li>
+                <li><?= MyHtml::link('login/', '<i class="fa fa-circle-o"></i> Login Page') ?></li>
+                <li><?= MyHtml::link('register/', '<i class="fa fa-circle-o"></i> Register Page') ?></li>
             </ul>
+        </li>
+        <li <?= ($breadcrumbs['controlador'] === 'pages') ? 'class="active"' : '' ?>>
+            <?= MyHtml::link('pages/show/kumbia/status/', '<i class="fa fa-link"></i> <span>View Config</span>') ?>
         </li>
     </ul>
 </section>

@@ -9,7 +9,7 @@
             <!-- Main Header -->
             <header class="main-header">
                 <!-- Logo -->
-                <?php View::partial('adminlte/logo') ?>
+                <?= MyHtml::link('', '<span class="logo-mini"><b>A</b>LT</span><span class="logo-lg"><b>Admin</b>LTE</span>', 'class="logo"') ?>
                 <!-- Header Navbar -->
                 <nav class="navbar navbar-static-top">
                     <?php View::partial('adminlte/navbar_main') ?>
@@ -17,7 +17,7 @@
             </header>
             <!-- Left side column. Contains the sidebar -->
             <aside class="main-sidebar">
-                <?php View::partial('adminlte/sidebar') ?>
+                <?php View::partial('adminlte/sidebar', NULL, array('breadcrumbs' => $breadcrumbs)) ?>
             </aside>
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
@@ -36,7 +36,7 @@
             </footer>
             <!-- Control Sidebar 
             <aside class="control-sidebar control-sidebar-dark">
-                <?php # View::partial('adminlte/control_sidebar') ?>
+            <?php # View::partial('adminlte/control_sidebar') ?>
             </aside>
             -->
             <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar 
