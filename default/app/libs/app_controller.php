@@ -38,7 +38,7 @@ class AppController extends Controller
     final protected function manageLogin() 
     {
         //Verifico que haya iniciado sesión
-        if (!Users::isValid() && $this->controller_name !== 'pages') 
+        if (!Users::isValid() && $this->controller_name !== 'register') 
         {
             //Verifico que no genere una redirección infinita
             if (($this->controller_name !== 'login') && ($this->action_name != 'entrar' && $this->action_name != 'salir')) 
