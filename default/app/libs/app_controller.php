@@ -1,5 +1,7 @@
 <?php
 
+Load::model('adminlte/users');
+
 /**
  * @see Controller nuevo controller
  */
@@ -24,7 +26,7 @@ class AppController extends Controller
         $this->breadcrumbs = array('modulo' => $this->module_name, 'controlador' => $this->controller_name, 'accion' => $this->action_name, 'parametros' => $this->parameters);
         # Template por defecto (AdminLTE v2.4.5 - blankPage):
         View::template('adminlte/starter');
-        
+        # Comprobación del logeo
         $this->manageLogin();
     }
 
@@ -35,17 +37,14 @@ class AppController extends Controller
 
     final protected function manageLogin() 
     {
-        /**
-         * Verifico que haya iniciado sesión
-         */
+        //Verifico que haya iniciado sesión
         if (!Users::isValid() && $this->controller_name !== 'pages') 
         {
             //Verifico que no genere una redirección infinita
             if (($this->controller_name !== 'login') && ($this->action_name != 'entrar' && $this->action_name != 'salir')) 
             {
-                Flash::warning('No has iniciado sesión.');
-                Router::redirect('login/entrar/');
-                
+                # Flash::warning('No has iniciado sesión.');
+                Redirect::to('login/');
                 return false;
             }
         }

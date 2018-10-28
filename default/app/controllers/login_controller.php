@@ -1,47 +1,44 @@
 <?php
 
+Load::model('adminlte/users');
+
 class LoginController extends AppController {
 
-    protected function before_filter() {
-        # Change template by default:
+    public function index() 
+    {
         View::template('adminlte/login');
-    }
-
-    public function index() {
-        
     }
 
     /**
      * Método para iniciar sesión
      */
     public function entrar() 
-    {
+    {   
         $usuario = new Users();
         
         if ($usuario->iniciarSesion())
         {
-            Router::redirect('/');
+            Redirect::to('index/index/');
+        } 
+        else 
+        {
+            Redirect::toAction('index');
         }
     }
 
     /**
      * Método para cerrar sesión
      */
-    public function salir($opt = false) 
-    {
-        if ($opt == 'no-script') 
-        {
-            Flash::info('Active el uso de JavaScript en su navegador para poder continuar.');
-        }
-        
-        $usuario = new Usuario();
+    public function salir() 
+    {   
+        $usuario = new Users();
         
         if ($usuario->cerrarSesion()) 
         {
             Flash::valid("La sesión ha sido cerrada correctamente.");
         }
-        
-        View::select('entrar');
+        # View::select('entrar');
+        MyRedirect::to('login/', 2);
     }
 
 }
