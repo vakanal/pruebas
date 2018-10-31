@@ -3,6 +3,26 @@
 class Users extends ActiveRecord 
 {
 
+    protected function initialize()
+    {
+        $this->validates_email_in('mail');
+    }
+
+    protected function before_save()
+    {
+        $this->pass = hash('sha3-512', $this->pass);
+    }
+
+    /**
+     * Método para demostrar el correcto funcionamiento
+     * de la conexión con la BD (by Álvaro GR)
+     * @return array
+     */
+    public function getUsers() 
+    {
+        return $this->find();
+    }
+
     /**
      * Método para verificar si el usuario ha iniciado sesion
      * @return boolean
@@ -39,12 +59,13 @@ class Users extends ActiveRecord
                 
                 if ($auth->identify() && $auth->isValid()) //Verifico si el usuario es válido
                 { 
-                    # sleep(2);
+                    sleep(2);
                     # Flash::info('¡Bienvenido <strong>' . Input::post('mail') . '</strong>!');
                     return true;
                 } 
                 else 
                 {
+                    sleep(2);
                     Flash::error('El usuario y/o la contraseña son incorrectos.');
                 }
             }
@@ -74,11 +95,6 @@ class Users extends ActiveRecord
             unset($_SESSION['KUMBIA_SESSION'][APP_PATH]);
             return true;
         }
-    }
-
-    public function getUsers() 
-    {
-        return $this->find();
     }
 
 }
