@@ -25,7 +25,7 @@
     <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
         <li <?= ($breadcrumbs['controlador'] === 'index') ? 'class="treeview active"' : 'class="treeview"' ?>>
-            <a href="#"><i class="fa fa-link"></i> <span>Examples</span>
+            <a href="#"><i class="fa fa-folder"></i> <span>Examples</span>
                 <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
@@ -40,7 +40,7 @@
             </ul>
         </li>
         <li <?= ($breadcrumbs['controlador'] === 'pages') ? 'class="active"' : '' ?>>
-            <?= MyHtml::link('status/', '<i class="fa fa-link"></i> View Config') ?>
+            <?= MyHtml::link('status/', '<i class="fa fa-book"></i> <span>View Config</span>') ?>
         </li>
     </ul>
 </section>
