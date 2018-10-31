@@ -38,7 +38,7 @@ class LoginController extends AppController {
             Flash::valid("La sesión ha sido cerrada correctamente.");
         }
         # View::select('entrar');
-        MyRedirect::to('login/', 2);
+        Redirect::to('index/index/');
     }
 
 }

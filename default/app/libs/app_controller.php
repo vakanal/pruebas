@@ -44,7 +44,7 @@ class AppController extends Controller
             if (($this->controller_name !== 'login') && ($this->action_name != 'entrar' && $this->action_name != 'salir')) 
             {
                 # Flash::warning('No has iniciado sesión.');
-                Redirect::to('login/');
+                MyRedirect::to('login/');
                 return false;
             }
         }

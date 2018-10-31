@@ -39,13 +39,12 @@ class Users extends ActiveRecord
                 
                 if ($auth->identify() && $auth->isValid()) //Verifico si el usuario es válido
                 { 
-                    sleep(2);
+                    # sleep(2);
                     # Flash::info('¡Bienvenido <strong>' . Input::post('mail') . '</strong>!');
                     return true;
                 } 
                 else 
                 {
-                    sleep(2);
                     Flash::error('El usuario y/o la contraseña son incorrectos.');
                 }
             }

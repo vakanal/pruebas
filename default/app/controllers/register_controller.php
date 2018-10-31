@@ -1,16 +1,13 @@
 <?php
 
+Load::model('adminlte/users');
+
 class RegisterController extends AppController 
 {
     
-    protected function before_filter() 
+    public function index()
     {
-        # Change template by default:
         View::template('adminlte/register');
     }
     
-    public function index()
-    {
-        
-    }
 }
