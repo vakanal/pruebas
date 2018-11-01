@@ -27,7 +27,7 @@ class AppController extends Controller
         # Template por defecto (AdminLTE v2.4.5 - blankPage):
         View::template('adminlte/starter');
         $entrar = $this->manageLogin();
-        if ($entrar)
+        if ($entrar && $this->controller_name !== 'register')
         {
             $this->manageACL();
         }
