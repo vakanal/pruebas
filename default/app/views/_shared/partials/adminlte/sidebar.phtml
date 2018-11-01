@@ -32,7 +32,7 @@
             </a>
             <ul class="treeview-menu">
                 <li <?= ($breadcrumbs['controlador'] === 'index') ? 'class="active"' : '' ?>>
-                    <?= MyHtml::link('', ($breadcrumbs['accion'] === 'index') ? '<i class="fa fa-circle-o text-aqua"></i> Start Page' : '<i class="fa fa-circle-o"></i> Start Page') ?>
+                    <?= MyHtml::link('', ($breadcrumbs['controlador'] === 'index' && $breadcrumbs['accion'] === 'index') ? '<i class="fa fa-circle-o text-aqua"></i> Start Page' : '<i class="fa fa-circle-o"></i> Start Page') ?>
                 </li>
                 <li><?= MyHtml::link('lock/', '<i class="fa fa-circle-o"></i> Lock Page') ?></li>
                 <li><?= MyHtml::link('login/', '<i class="fa fa-circle-o"></i> Login Page') ?></li>
