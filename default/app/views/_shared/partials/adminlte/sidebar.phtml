@@ -25,14 +25,14 @@
     <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
         <li <?= ($breadcrumbs['controlador'] === 'index') ? 'class="treeview active"' : 'class="treeview"' ?>>
-            <a href="#"><i class="fa fa-link"></i> <span>Examples</span>
+            <a href="#"><i class="fa fa-folder"></i> <span>Examples</span>
                 <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
             </a>
             <ul class="treeview-menu">
                 <li <?= ($breadcrumbs['controlador'] === 'index') ? 'class="active"' : '' ?>>
-                    <?= MyHtml::link('', ($breadcrumbs['accion'] === 'index') ? '<i class="fa fa-circle-o text-aqua"></i> Start Page' : '<i class="fa fa-circle-o"></i> Start Page') ?>
+                    <?= MyHtml::link('', ($breadcrumbs['controlador'] === 'index' && $breadcrumbs['accion'] === 'index') ? '<i class="fa fa-circle-o text-aqua"></i> Start Page' : '<i class="fa fa-circle-o"></i> Start Page') ?>
                 </li>
                 <li><?= MyHtml::link('lock/', '<i class="fa fa-circle-o"></i> Lock Page') ?></li>
                 <li><?= MyHtml::link('login/', '<i class="fa fa-circle-o"></i> Login Page') ?></li>
@@ -40,7 +40,7 @@
             </ul>
         </li>
         <li <?= ($breadcrumbs['controlador'] === 'pages') ? 'class="active"' : '' ?>>
-            <?= MyHtml::link('pages/show/kumbia/status/', '<i class="fa fa-link"></i> View Config') ?>
+            <?= MyHtml::link('status/', '<i class="fa fa-book"></i> <span>View Config</span>') ?>
         </li>
     </ul>
 </section>

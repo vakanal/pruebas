@@ -1,12 +1,14 @@
+<?php # echo hash('sha3-512', 'varogr28') ?>
+
 <p class="login-box-msg">Sign in to start your session</p>
 
-<?= Form::open('', 'post') ?>
+<?= Form::open('login/entrar', 'post') ?>
 <div class="form-group has-feedback">
-    <?= Form::input('email', 'username', 'class="form-control" placeholder="Email"') ?>
+    <?= Form::input('email', 'mail', 'class="form-control" placeholder="Email" autofocus="autofocus"') ?>
     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 </div>
 <div class="form-group has-feedback">
-    <?= Form::pass('userpass', 'class="form-control" placeholder="Password"') ?>
+    <?= Form::pass('pass', 'class="form-control" placeholder="Password"') ?>
     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
 </div>
 <div class="row">
@@ -21,6 +23,7 @@
         <?= Form::submit('Sign In', 'class="btn btn-primary btn-block btn-flat"') ?>
     </div>
 </div>
+<?= Form::hidden('mode', NULL, 'auth') ?>
 <?= Form::close() ?>
 
 <!--

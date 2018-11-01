@@ -13,6 +13,9 @@
 <?php case 'register' : ?>
 <title>Curso CRUD | Registration</title>
 <?php break ?>
+<?php case 'profile' : ?>
+<title>Curso CRUD | User Profile</title>
+<?php break ?>
 <?php default : ?>
 <title>Curso CRUD | Starter</title>
 <?php endswitch ?>
@@ -31,10 +34,15 @@
 <?php case 'register' : ?>
 <?php Html::headLinkResource('css/adminlte/iCheck/square/blue.css', 'rel="stylesheet"') ?>
 <?php break ?>
+<?php case 'profile' : ?>
+<?php Html::headLinkResource('css/adminlte/iCheck/square/blue.css', 'rel="stylesheet"') ?>
+<?php Html::headLinkResource('css/adminlte/css/skins/_all-skins.min.css', 'rel="stylesheet"') ?>
+<?php break ?>
 <?php default : ?>
 <?php Html::headLinkResource('css/adminlte/css/skins/_all-skins.min.css', 'rel="stylesheet"') ?>
 <?php endswitch ?>
 
+<?php Html::headLinkResource('css/adminlte/styles.css', 'rel="stylesheet"') ?>
 <?php Html::headLink('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic', 'rel="stylesheet"') ?>
 <?= Html::includeHeadLinks() ?>
 
