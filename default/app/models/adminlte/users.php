@@ -20,6 +20,16 @@ class Users extends ActiveRecord
         }
     }
 
+    protected function after_save()
+    {
+        Session::set('nick', $this->nick);
+        Session::set('mail', $this->mail);
+        if (!empty($this->pass))
+        {
+            Session::set('pass', $this->pass);
+        }
+    }
+
     public function getUser($id)
     {
         return $this->find($id);
