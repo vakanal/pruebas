@@ -26,10 +26,18 @@ class AppController extends Controller
         $this->breadcrumbs = array('modulo' => $this->module_name, 'controlador' => $this->controller_name, 'accion' => $this->action_name, 'parametros' => $this->parameters);
         # Template por defecto (AdminLTE v2.4.5 - blankPage):
         View::template('adminlte/starter');
+        $entrar = $this->manageLogin();
+        if ($entrar)
+        {
+            $this->manageACL();
+        }
+
+        /*
         # Comprobación del logeo
         $this->manageLogin();
         # Comprobaciones del ACL propio
-
+        $this->manageACL();
+        */
     }
 
     final protected function finalize() 
@@ -50,6 +58,10 @@ class AppController extends Controller
                 return false;
             }
         }
+        else
+        {
+            return true;
+        }
     }
 
     final protected function manageACL()
@@ -66,10 +78,11 @@ class AppController extends Controller
         if (!$acl->check($privilegio, $modulo, $controlador, $accion))
         { 
             // si no posee los privilegios necesarios le enviamos un mensaje indicandoselo
-            MyFlash::show('danger', "No posees suficientes PRIVILEGIOS para acceder a: {$modulo}/{$controlador}/{$accion}");
+            MyFlash::show('danger', "No posees suficientes PRIVILEGIOS para acceder a: {$modulo}/{$controlador}/{$accion}", TRUE);
+            
             //no dejamos que entre al contenido de la url si no tiene permisos
-            View::select(NULL, 'adminlte/no_permiso');
-            return false;
+            # View::select(NULL, 'adminlte/no_permiso');
+            return Redirect::to('index/index/');
         }
     }
 
