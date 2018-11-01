@@ -9,11 +9,24 @@
 <?php case 'register' : ?>
 <?= Tag::js('adminlte/iCheck/icheck.min') ?>
 <?php break ?>
+<?php case 'profile' : ?>
+<?= Tag::js('adminlte/fastclick/lib/fastclick') ?>
+<?= Tag::js('adminlte/js/adminlte.min') ?>
+<?= Tag::js('adminlte/iCheck/icheck.min') ?>
+<?= Tag::js('adminlte/js/demo') ?>
+<script>
+	$('input').iCheck({
+        checkboxClass: 'icheckbox_square-blue',
+        radioClass: 'iradio_square-blue',
+        increaseArea: '20%' /* optional */
+    });
+</script>
+<?php break ?>
 <?php default : ?>
 <?= Tag::js('adminlte/jquery-slimscroll/jquery.slimscroll.min') ?>
 <?= Tag::js('adminlte/fastclick/lib/fastclick') ?>
 <?= Tag::js('adminlte/js/adminlte.min') ?>
 <?= Tag::js('adminlte/js/demo') ?>
-<?= Tag::js('adminlte/TodoList') ?>
+<?php # echo Tag::js('adminlte/TodoList') //TODO: investigar cómo se usa correctamente ?>
 <?= Tag::js('adminlte/main') ?>
 <?php endswitch ?>
