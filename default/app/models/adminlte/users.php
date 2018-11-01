@@ -55,18 +55,20 @@ class Users extends ActiveRecord
                 $auth->setAlgos('sha3-512');
                 $auth->setCheckSession(true); //Se utiliza para que no inicie sesión en otro navegador (no me funciona :S)
                 $auth->setModel('users'); //Indico cual es el modelo respectivo para que consulte en la base de datos
-                $auth->setFields(array('id', 'mail', 'pass', 'rol')); //Estos campos se almacenan en sesión automáticamente
+                $auth->setFields(array('id', 'mail', 'pass', 'nick', 'rol', 'create_at')); //Estos campos se almacenan en sesión automáticamente
                 
                 if ($auth->identify() && $auth->isValid()) //Verifico si el usuario es válido
                 { 
                     sleep(2);
                     # Flash::info('¡Bienvenido <strong>' . Input::post('mail') . '</strong>!');
+                    MyFlash::show('info', '¡Bienvenido <strong>' . Session::get('nick') . '</strong>!', TRUE);
                     return true;
                 } 
                 else 
                 {
                     sleep(2);
-                    Flash::error('El usuario y/o la contraseña son incorrectos.');
+                    # Flash::error('El usuario y/o la contraseña son incorrectos.');
+                    MyFlash::show('danger', 'El usuario y/o la contraseña son incorrectos.', TRUE);
                 }
             }
         }
@@ -82,7 +84,8 @@ class Users extends ActiveRecord
         //Verifico si tiene sesión
         if (!self::isValid()) 
         {
-            Flash::error("No has iniciado sesión o ha caducado. <br /> Por favor identifícate nuevamente.");
+            # Flash::error("No has iniciado sesión o ha caducado. <br /> Por favor identifícate nuevamente.");
+            MyFlash::show('danger', 'No has iniciado sesión o ha caducado. <br /> Por favor identifícate nuevamente.', TRUE);
             return false;
         } 
         else 

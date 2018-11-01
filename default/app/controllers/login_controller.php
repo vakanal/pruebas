@@ -35,10 +35,11 @@ class LoginController extends AppController {
         
         if ($usuario->cerrarSesion()) 
         {
-            Flash::valid("La sesión ha sido cerrada correctamente.");
+            # Flash::valid("La sesión ha sido cerrada correctamente.");
+            MyFlash::show('success', 'La sesión ha sido cerrada correctamente.', TRUE);
         }
         # View::select('entrar');
-        Redirect::to('index/index/');
+        Redirect::toAction('index');
     }
 
 }
