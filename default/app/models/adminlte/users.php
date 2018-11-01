@@ -10,17 +10,19 @@ class Users extends ActiveRecord
 
     protected function before_save()
     {
-        $this->pass = hash('sha3-512', $this->pass);
+        if (empty($this->pass))
+        {
+            $this->pass = Session::get('pass');
+        }
+        else
+        {
+            $this->pass = hash('sha3-512', $this->pass);
+        }
     }
 
-    /**
-     * Método para demostrar el correcto funcionamiento
-     * de la conexión con la BD (by Álvaro GR)
-     * @return array
-     */
-    public function getUsers() 
+    public function getUser($id)
     {
-        return $this->find();
+        return $this->find($id);
     }
 
     /**
@@ -61,7 +63,7 @@ class Users extends ActiveRecord
                 { 
                     sleep(2);
                     # Flash::info('¡Bienvenido <strong>' . Input::post('mail') . '</strong>!');
-                    MyFlash::show('info', '¡Bienvenido <strong>' . Session::get('nick') . '</strong>!', TRUE);
+                    MyFlash::show('success', '¡Bienvenido <strong>' . Session::get('nick') . '</strong>!', TRUE);
                     return true;
                 } 
                 else 
