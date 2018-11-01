@@ -28,6 +28,8 @@ class AppController extends Controller
         View::template('adminlte/starter');
         # Comprobación del logeo
         $this->manageLogin();
+        # Comprobaciones del ACL propio
+
     }
 
     final protected function finalize() 
@@ -47,6 +49,27 @@ class AppController extends Controller
                 MyRedirect::to('login/');
                 return false;
             }
+        }
+    }
+
+    final protected function manageACL()
+    {
+        //instanciamos a la clase MyAcl , y le indicamos el ini a utlizar
+        $acl = new MyAcl('privilegios');  //si no se especifica el archivo a usar, por defecto busca en privilegios.ini
+        
+        $modulo = $this->module_name; //obtenermos el modulo actual
+        $controlador = $this->controller_name; //obtenemos el controlador actual
+        $accion = $this->action_name; //y obtenemos la accion actual
+        
+        $privilegio = Session::get('rol');
+        //verificamos si tiene ó no privilegios
+        if (!$acl->check($privilegio, $modulo, $controlador, $accion))
+        { 
+            // si no posee los privilegios necesarios le enviamos un mensaje indicandoselo
+            MyFlash::show('danger', "No posees suficientes PRIVILEGIOS para acceder a: {$modulo}/{$controlador}/{$accion}");
+            //no dejamos que entre al contenido de la url si no tiene permisos
+            View::select(NULL, 'adminlte/no_permiso');
+            return false;
         }
     }
 
