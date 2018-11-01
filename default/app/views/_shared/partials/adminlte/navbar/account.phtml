@@ -1,18 +1,19 @@
 <li class="dropdown user user-menu">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
         <?= Html::img('adminlte/img/user2-160x160.jpg', 'User Image', 'class="user-image"') ?>
-        <span class="hidden-xs">Alexander Pierce</span>
+        <span class="hidden-xs"><?= ucwords(Session::get('nick')) ?></span>
     </a>
     <ul class="dropdown-menu">
         <!-- User image -->
         <li class="user-header">
             <?= Html::img('adminlte/img/user2-160x160.jpg', 'User Image', 'class="img-circle"') ?>
             <p>
-                Alexander Pierce - Web Developer
-                <small>Member since Nov. 2012</small>
+                <?= ucwords(Session::get('nick')) ?> - <?= ucwords(Session::get('rol')) ?>
+                <small>Member since <?= date_format(date_create(Session::get('create_at')), 'M. Y') ?></small>
             </p>
         </li>
         <!-- Menu Body -->
+        <!--
         <li class="user-body">
             <div class="row">
                 <div class="col-xs-4 text-center">
@@ -25,15 +26,17 @@
                     <a href="#">Friends</a>
                 </div>
             </div>
-            <!-- /.row -->
         </li>
+        -->
         <!-- Menu Footer-->
         <li class="user-footer">
             <div class="pull-left">
-                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                <?= MyHtml::link('profile/', 'Profile', 'class="btn btn-default btn-flat"') ?>
+                <!-- <a href="#" class="btn btn-default btn-flat">Profile</a> -->
             </div>
             <div class="pull-right">
-                <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                <?= MyHtml::link('login/salir/', 'Sign out', 'class="btn btn-default btn-flat"') ?>
+                <!-- <a href="#" class="btn btn-default btn-flat">Sign out</a> -->
             </div>
         </li>
     </ul>

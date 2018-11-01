@@ -3,6 +3,9 @@
 <?php case 'pages' : ?>
 Config Page <small>framework configurations</small>
 <?php break ?>
+<?php case 'profile' : ?>
+User Profile <small>complete information</small>
+<?php break ?>
 <?php default : ?>
 Starter Page <small>it all starts here</small>
 <?php endswitch ?>
@@ -17,7 +20,7 @@ Starter Page <small>it all starts here</small>
     <li class="active"><?= ucfirst($breadcrumbs['accion']) ?></li>
     <?php else : # Rest of cases ?> 
     <li><?= MyHtml::link('', '<i class="fa fa-dashboard"></i> Home</a>') ?></li>
-    <li><?= MyHtml::link($breadcrumbs['controlador'], ucfirst($breadcrumbs['controlador'])) ?></li>
+    <li><?= MyHtml::link($breadcrumbs['controlador'] . '/', ucfirst($breadcrumbs['controlador'])) ?></li>
     <li class="active"><?= ucfirst($breadcrumbs['accion']) ?></li>
     <?php endif ?>
 </ol>
