@@ -2,8 +2,8 @@
 -- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 01-11-2018 a las 20:27:27
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 10-11-2018 a las 23:09:54
 -- Versión del servidor: 10.1.36-MariaDB
 -- Versión de PHP: 7.2.11
 
@@ -1223,6 +1223,8 @@ CREATE TABLE `users` (
   `mail` varchar(255) COLLATE utf8_spanish_ci DEFAULT NULL,
   `pass` varchar(255) COLLATE utf8_spanish_ci DEFAULT NULL,
   `nick` varchar(255) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `bio` text COLLATE utf8_spanish_ci,
+  `photo` varchar(255) COLLATE utf8_spanish_ci DEFAULT NULL,
   `rol` enum('administrador','alumno') COLLATE utf8_spanish_ci NOT NULL DEFAULT 'alumno',
   `create_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_in` datetime DEFAULT NULL
@@ -1232,9 +1234,9 @@ CREATE TABLE `users` (
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `mail`, `pass`, `nick`, `rol`, `create_at`, `update_in`) VALUES
-(1, 'varo@gmail.com', '8bae91d6e0b68b71f947d2fa30f14e814a030dbc7d08f3763e7dcd1ac3243327c46291cecf8b8be479c7a27747494592fe8e840335ab639f4191594da9e4d029', 'Álvaro Gordillo reina', 'administrador', '2018-10-20 23:28:52', '2018-11-01 20:11:30'),
-(2, 'alumn@gmail.com', '64d09d9930c8ecf79e513167a588cb75439b762ce8f9b22ea59765f32aa74ca19d2f1e97dc922a3d4954594a05062917fb24d1f8e72f2ed02a58ed7534f94d27', 'Alumno Uno', 'alumno', '2018-10-31 22:26:49', NULL);
+INSERT INTO `users` (`id`, `mail`, `pass`, `nick`, `bio`, `photo`, `rol`, `create_at`, `update_in`) VALUES
+(1, 'varo@gmail.com', '8bae91d6e0b68b71f947d2fa30f14e814a030dbc7d08f3763e7dcd1ac3243327c46291cecf8b8be479c7a27747494592fe8e840335ab639f4191594da9e4d029', 'Álvaro Gordillo Reina', '<span style=\"font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\"><b style=\"\"><font color=\"#cc00cc\">Lorem ipsum dolor sit amet consectetur adipiscing elit neque hendrerit, ultricies diam ridiculus sagittis odio erat malesuada augue</font></b><font color=\"rgba(0, 0, 0, 0.8)\">, auctor turpis praesent nunc suspendisse ac per vel. Blandit natoque dignissim dui aenean quam vivamus fusce massa potenti proin, sollicitudin tellus pellentesque nascetur viverra lacus in penatibus morbi convallis, platea magna bibendum ligula lacinia congue magnis enim libero. Morbi id arcu sagittis tincidunt nec vulputate magnis, placerat sem donec netus libero quis faucibus, inceptos laoreet eu hendrerit sociis risus.</font></span><br>', 'd05af9ac202a350c84afe8f8d11e82e4.png', 'administrador', '2018-10-20 23:28:52', '2018-11-10 23:06:15'),
+(2, 'alumn@gmail.com', '64d09d9930c8ecf79e513167a588cb75439b762ce8f9b22ea59765f32aa74ca19d2f1e97dc922a3d4954594a05062917fb24d1f8e72f2ed02a58ed7534f94d27', 'Alumno Uno', NULL, NULL, 'alumno', '2018-10-31 22:26:49', NULL);
 
 --
 -- Índices para tablas volcadas

@@ -14,11 +14,19 @@
 <?= Tag::js('adminlte/js/adminlte.min') ?>
 <?= Tag::js('adminlte/iCheck/icheck.min') ?>
 <?= Tag::js('adminlte/js/demo') ?>
+<?= Tag::js('adminlte/nicEdit/nicEdit') ?>
 <script>
 	$('input').iCheck({
         checkboxClass: 'icheckbox_square-blue',
         radioClass: 'iradio_square-blue',
         increaseArea: '20%' /* optional */
+    });
+    //nicEdit Plugin Start:
+    bkLib.onDomLoaded(function() {
+        nicEditors.allTextAreas({
+            //buttonList : ['bold','italic','underline','ol','ul','subscript','superscript','strikethrough','fontFormat','hr','link','unlink','image','xhtml'],
+            iconsPath : '<?= PUBLIC_PATH ?>/javascript/adminlte/nicEdit/nicEditorIcons.gif'
+        });
     });
 </script>
 <?php break ?>
