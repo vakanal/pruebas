@@ -10,7 +10,7 @@ class Users extends ActiveRecord
 
     protected function before_save()
     {
-        if (empty($this->pass))
+        if (empty($this->pass) || Input::hasPost('oculto'))
         {
             $this->pass = Session::get('pass');
         }
@@ -24,10 +24,8 @@ class Users extends ActiveRecord
     {
         Session::set('nick', $this->nick);
         Session::set('mail', $this->mail);
-        if (!empty($this->pass))
-        {
-            Session::set('pass', $this->pass);
-        }
+        Session::set('photo', $this->photo);
+        Session::set('pass', $this->pass);
     }
 
     public function getUser($id)
@@ -67,7 +65,7 @@ class Users extends ActiveRecord
                 $auth->setAlgos('sha3-512');
                 $auth->setCheckSession(true); //Se utiliza para que no inicie sesión en otro navegador (no me funciona :S)
                 $auth->setModel('users'); //Indico cual es el modelo respectivo para que consulte en la base de datos
-                $auth->setFields(array('id', 'mail', 'pass', 'nick', 'rol', 'create_at')); //Estos campos se almacenan en sesión automáticamente
+                $auth->setFields(array('id', 'mail', 'pass', 'nick', 'rol', 'photo', 'create_at')); //Estos campos se almacenan en sesión automáticamente
                 
                 if ($auth->identify() && $auth->isValid()) //Verifico si el usuario es válido
                 { 
@@ -119,20 +117,16 @@ class Users extends ActiveRecord
      * @return boolean
      * @throws Exception
      */
-    public function saveWithPhoto($data)
+    public function saveWithPhoto()
     {
         //Inicia la transacción
         $this->begin();
-        //Intenta crear el usuario con los datos pasados
-        if ($this->create($data))
+        //Intenta subir y actualizar la foto
+        if ($this->updatePhoto())
         {
-            //Intenta subir y actualizar la foto
-            if ($this->updatePhoto())
-            {
-                //Se confirma la transacción
-                $this->commit();
-                return true;
-            }
+            //Se confirma la transacción
+            $this->commit();
+            return true;
         }
         //Si algo falla se regresa la transacción
         $this->rollback();
