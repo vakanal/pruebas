@@ -15,7 +15,7 @@
 			</ul>
 			<div class="tab-content">
 				<?php View::partial('adminlte/profile/settings', NULL, array('usuario' => $usuario)) ?>
-				<?php View::partial('adminlte/profile/about_me') ?>
+				<?php View::partial('adminlte/profile/about_me', NULL, array('usuario' => $usuario)) ?>
 				<?php # View::partial('adminlte/profile/activity') ?>
 				<?php # View::partial('adminlte/profile/timeline') ?>
 			</div>
