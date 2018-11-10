@@ -27,4 +27,20 @@ class ProfileController extends AppController
         }
     }
 
+    public function changePhoto($id)
+    {
+        $this->users = (new Users)->getUser($id);
+        if (Input::hasPost('users'))
+        {
+            if ($this->users->saveWithPhoto(Input::post('users')))
+            {
+                MyFlash::show('success', 'Usuario creado', TRUE);
+                return Redirect::toAction('index');
+            }
+            MyFlash::show('danger', 'Falló Operación', TRUE);
+            $this->users = Input::post('users');
+            return false;
+        }
+    }
+
 }
