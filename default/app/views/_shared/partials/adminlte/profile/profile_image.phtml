@@ -1,11 +1,19 @@
 <div class="box box-primary">
 	<div class="box-body box-profile">
-		<?= Html::img('adminlte/img/user6-128x128.jpg', 'User profile picture', 'class="profile-user-img img-responsive img-circle"') ?>
-
-		<h3 class="profile-username text-center"><?= ucwords(Session::get('nick')) ?></h3>
-
-		<p class="text-muted text-center">Software Engineer</p>
-
+		<?= Html::img(!empty($usuario->photo) ? "upload/{$usuario->photo}" : 'adminlte/img/user6-128x128.jpg', 'User profile picture', 'class="profile-user-img img-responsive img-circle"') ?>
+		
+		<h3 class="profile-username text-center"><?= ucwords($usuario->nick) ?></h3>
+		<p class="text-muted text-center"><?= ucwords($usuario->rol) ?></p>
+		
+		<?= Form::openMultipart("profile/edit_photo/") ?>
+		<?= Form::hidden('oculto', NULL, $usuario->id) ?>
+		<div class="form-group">
+			<?= Form::label('Photo File Input', 'photo') ?>
+			<?= Form::file('photo', 'class="form-control"') ?>
+		</div>
+		<?= Form::submit('Upload', 'class="btn btn-primary pull-right"') ?>
+		<?= Form::close() ?>
+		<!--
 		<ul class="list-group list-group-unbordered">
 			<li class="list-group-item">
 				<b>Followers</b> <a class="pull-right">1,322</a>
@@ -17,9 +25,7 @@
 				<b>Friends</b> <a class="pull-right">13,287</a>
 			</li>
 		</ul>
-
 		<a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+		-->
 	</div>
-    <!-- /.box-body -->
 </div>
-<!-- /.box -->

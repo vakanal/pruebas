@@ -12,19 +12,33 @@ class ProfileController extends AppController
 
     public function edit($id)
     {
-        # $usuario = new Users();
-        $this->users = (new Users)->getUser($id);
         if (Input::hasPost('users'))
         {
-            if ($this->users->update(Input::post('users')))
+            $this->usuario = (new Users)->getUser($id);
+            if ($this->usuario->update(Input::post('users')))
             {
                 MyFlash::show('success', 'Usuario actualizado con éxito', TRUE);
                 return Redirect::toAction('index');
             }
             MyFlash::show('danger', 'Falló Operación', TRUE);
-            $this->users = Input::post('users');
+            $this->usuario = Input::post('users');
             return false;
         }
+    }
+
+    public function edit_photo()
+    {
+        if (Input::hasPost('oculto'))
+        {
+            $this->usuario = (new Users)->getUser(Input::post('oculto'));
+            if ($this->usuario->saveWithPhoto())
+            {
+                MyFlash::show('success', 'Foto modificada con éxito', TRUE);
+                return Redirect::toAction('index');
+            }
+        }
+        MyFlash::show('danger', 'Falló Operación', TRUE);
+        return false;
     }
 
 }
